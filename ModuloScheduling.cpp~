@@ -46,7 +46,7 @@ INITIALIZE_PASS_BEGIN(InstructionCount,
                       true,
                       true)
 INITIALIZE_PASS_END(InstructionCount,
-                    "instruction-count-PIPPO",
+                    "instruction-count",
                     "Count instructions",
                     true,
                     true)
