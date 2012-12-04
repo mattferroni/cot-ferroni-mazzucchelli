@@ -13,4 +13,4 @@
 *.a
 
 # Installation script
-Misc/install.sh
+Misc/*
