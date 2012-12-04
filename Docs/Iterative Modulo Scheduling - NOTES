@@ -21,6 +21,7 @@ Passate da implementare:
 			- NO costrutti if nel corpo del loop
 			- NO register allocation
 			- Architettura di riferimento: MIPS R10000
+			- Solo istruzioni intere
 			Per ogni istruzione: quale risorsa usa (per ogni stadio della pipeline)
 		Output della Analysis pass precedente
 	- Output: istruzioni LLVM-IR rischedulate
@@ -48,7 +49,7 @@ Funzioni di servizio da implementare:
 		return sortedInstructions;
 
 
-	TDB: 
+	TBD: 
 		existUnscheduledInstructions(???);
 		findHighPriorityUnscheduledInstruction(???);
 		findPredecessors(h, ???);
@@ -108,7 +109,7 @@ Pseudocodice per la optimization pass:
 
 		successorsOfH = findSuccessors(h, ???);
 
-		// ???
+		// if successor of h is execute before the end of h, then unschedule it
 		forEach(instruction s in successorsOfH){
 			if(SchedTime[s] != null){
 				if(SchedTime[h] + delay(h, s) > SchedTime[s]){
@@ -118,7 +119,7 @@ Pseudocodice per la optimization pass:
 		}
 
 		// Remove from the scheduling all the instructions (other than h) involved in a resource conflict
-		for(s = getFirstInstructionConflicting(???); s != h ; s = getFirstInstructionConflicting(???);){
+		for(s = getFirstInstructionConflicting(???); s != h ; s = getFirstInstructionConflicting(???)){
 			SchedTime[s] = null;
 		}
 
